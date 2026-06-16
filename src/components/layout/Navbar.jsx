@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { NAV_LINKS, SITE } from '@/lib/constants';
 
@@ -104,7 +104,7 @@ export function Navbar() {
   /* Close panel on desktop viewport */
   useEffect(() => {
     const handler = () => {
-      if (window.innerWidth >= 768) setMobileOpen(false);
+      if (window.innerWidth >= 1024) setMobileOpen(false);
     };
     window.addEventListener('resize', handler);
     return () => window.removeEventListener('resize', handler);
@@ -190,7 +190,7 @@ export function Navbar() {
             </Link>
 
             {/* Desktop nav links */}
-            <ul className="hidden md:flex items-center gap-1.5" role="list">
+            <ul className="hidden lg:flex items-center gap-0 min-[1150px]:gap-1.5" role="list">
               {NAV_LINKS.map(({ label, href }) => {
                 const isActive = activeSection === href;
                 return (
@@ -199,7 +199,7 @@ export function Navbar() {
                       href={href}
                       onClick={(e) => handleNavClick(e, href)}
                       className={cn(
-                        'block text-[13px] font-medium leading-none py-2 px-3.5 rounded-md transition-all duration-200',
+                        'block text-[13px] font-medium leading-none py-2 px-2.5 min-[1150px]:px-3.5 rounded-md transition-all duration-200',
                         isActive
                           ? 'text-foreground'
                           : 'text-secondary hover:text-foreground hover:bg-black/[0.03] dark:hover:bg-white/[0.04]'
@@ -221,7 +221,7 @@ export function Navbar() {
             </ul>
 
             {/* Desktop right actions */}
-            <div className="hidden md:flex items-center gap-3">
+            <div className="hidden lg:flex items-center gap-3">
               <ThemeToggle />
               <Button
                 as={Link}
@@ -236,7 +236,7 @@ export function Navbar() {
             </div>
 
             {/* Mobile controls */}
-            <div className="flex md:hidden items-center gap-2">
+            <div className="flex lg:hidden items-center gap-2">
               <ThemeToggle />
               <button
                 type="button"
@@ -270,7 +270,7 @@ export function Navbar() {
               animate="visible"
               exit="exit"
               onClick={() => setMobileOpen(false)}
-              className="fixed inset-0 z-40 bg-background/50 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-[55] bg-white/70 dark:bg-black/75 backdrop-blur-[8px] lg:hidden"
               aria-hidden
             />
 
@@ -285,36 +285,25 @@ export function Navbar() {
               animate="visible"
               exit="exit"
               className={cn(
-                'fixed top-0 right-0 bottom-0 z-50',
-                'w-72 flex flex-col',
-                'bg-surface border-l border-[var(--border-color)]',
-                'md:hidden'
+                'fixed top-0 right-0 bottom-0 z-[60]',
+                'w-64 flex flex-col',
+                'bg-background border-l border-edge/30',
+                'lg:hidden'
               )}
             >
               {/* Panel header */}
-              <div className="flex items-center justify-between px-6 h-16 border-b border-[var(--border-color)] flex-shrink-0">
-                <Link 
-                  href="/"
-                  onClick={(e) => handleNavClick(e, '/')}
-                  className="flex items-center gap-2.5 select-none"
-                >
-                  <Image
-                    src="/branding/logo.png"
-                    alt="Kunal Kavathekar Logo"
-                    width={32}
-                    height={32}
-                    className="h-8 w-auto object-contain"
-                  />
-                  <span className="font-semibold text-[14px] tracking-tight text-foreground">Kunal Kavathekar</span>
-                </Link>
+              <div className="flex items-center justify-between px-6 py-6 border-b border-edge/30 flex-shrink-0">
+                <span className="font-mono text-[11px] tracking-[0.25em] uppercase text-secondary">
+                  Menu
+                </span>
                 <button
                   type="button"
                   onClick={() => setMobileOpen(false)}
                   aria-label="Close navigation menu"
                   className={cn(
                     'inline-flex items-center justify-center w-8 h-8',
-                    'rounded-[var(--radius-sm)] border border-[var(--border-color)]',
-                    'text-muted hover:text-foreground hover:border-[var(--foreground-muted)]',
+                    'rounded-md border border-edge/30',
+                    'text-muted hover:text-foreground hover:border-edge/60',
                     'transition-all duration-150 cursor-pointer'
                   )}
                 >
@@ -323,8 +312,8 @@ export function Navbar() {
               </div>
 
               {/* Nav links */}
-              <nav className="flex-1 overflow-y-auto px-3 py-5">
-                <ul className="space-y-0.5" role="list">
+              <nav className="flex-1 overflow-y-auto px-6 py-3">
+                <ul className="space-y-3" role="list">
                   {NAV_LINKS.map(({ label, href, index }, i) => {
                     const isActive = activeSection === href;
                     return (
@@ -339,41 +328,55 @@ export function Navbar() {
                           href={href}
                           onClick={(e) => handleNavClick(e, href)}
                           className={cn(
-                            'flex items-center gap-4 px-3 py-2.5 rounded-[var(--radius-sm)]',
-                            'transition-all duration-150',
-                            isActive
-                              ? 'bg-orange/[0.08] text-foreground'
-                              : 'text-secondary hover:text-foreground hover:bg-[var(--surface-elevated)]'
+                            'group flex items-center gap-4 transition-all duration-200',
+                            'hover:translate-x-1',
+                            isActive ? 'text-orange' : 'text-foreground hover:text-orange'
                           )}
                         >
-                          <span className="font-mono text-[10px] text-muted w-5 shrink-0">
+                          <span className={cn(
+                            'font-mono text-[11px] transition-colors duration-200',
+                            isActive ? 'text-orange/80' : 'text-secondary group-hover:text-orange/80'
+                          )}>
                             {index}
                           </span>
-                          <span className="text-[13px] font-medium">{label}</span>
-                          {isActive && (
-                            <span className="ml-auto w-1 h-1 rounded-full bg-orange shrink-0" />
-                          )}
+                          <span className={cn(
+                            'text-[14px] font-medium tracking-tight transition-colors duration-200'
+                          )}>
+                            {label}
+                          </span>
                         </Link>
                       </motion.li>
                     );
                   })}
+
+                  {/* 09 Resume */}
+                  <motion.li
+                    custom={NAV_LINKS.length}
+                    variants={linkItemVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="pt-4 mt-2 border-t border-edge/60"
+                  >
+                    <a
+                      href={SITE.resume}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={cn(
+                        'group flex items-center gap-4 transition-all duration-200',
+                        'hover:translate-x-1 text-foreground hover:text-orange'
+                      )}
+                    >
+                      <span className="font-mono text-[11px] text-secondary group-hover:text-orange/80 transition-colors duration-200">
+                        09
+                      </span>
+                      <span className="text-[14px] font-medium tracking-tight transition-colors duration-200 flex items-center gap-2">
+                        Resume
+                        <Download size={14} strokeWidth={2} className="opacity-70" />
+                      </span>
+                    </a>
+                  </motion.li>
                 </ul>
               </nav>
-
-              {/* Panel footer */}
-              <div className="flex-shrink-0 px-4 pb-8 pt-4 border-t border-[var(--border-color)]">
-                <Button
-                  as={Link}
-                  href={SITE.resume}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="primary"
-                  size="md"
-                  className="w-full"
-                >
-                  Download Resume
-                </Button>
-              </div>
             </motion.div>
           </>
         )}

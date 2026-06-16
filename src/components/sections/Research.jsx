@@ -32,7 +32,7 @@ export function Research() {
 
         {/* Main Heading and Subtitle */}
         <div className="mb-10 max-w-[65ch]">
-          <h3 className="text-[36px] sm:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground mb-6">
+          <h3 className="text-[32px]s md:text-[36px] xl:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground mb-6">
             Research & Intellectual Property
           </h3>
           <p className="text-[15px] sm:text-[16px] text-secondary leading-relaxed">

@@ -53,8 +53,8 @@ function SocialIconLink({ href, label, children, external = true }) {
       rel={external ? 'noopener noreferrer' : undefined}
       aria-label={label}
       className={cn(
-        'w-9 h-9 inline-flex items-center justify-center',
-        'rounded-[10px]',
+        'w-8 h-8 sm:w-9 sm:h-9 inline-flex items-center justify-center',
+        'rounded-[8px] sm:rounded-[10px]',
         'border border-[var(--border-color)]',
         'text-muted hover:text-foreground hover:border-[var(--foreground-muted)]',
         'transition-all duration-200 ease-out focus-visible:outline-2 focus-visible:outline-orange'
@@ -73,12 +73,12 @@ export function Hero() {
       aria-label="Introduction"
       className="relative bg-[var(--surface)] dark:bg-transparent"
     >
-      <Container className="pt-30 pb-20">
+      <Container className="pt-30 pb-10 lg:pb-20">
         <motion.div
           className={cn(
             'grid grid-cols-1',
-            'gap-y-12 lg:gap-y-0',
-            'lg:grid-cols-12 lg:gap-x-8 xl:gap-x-12'
+            'gap-y-4 md:gap-y-0',
+            'md:grid-cols-12 md:gap-x-6 lg:gap-x-8 xl:gap-x-12'
           )}
           variants={gridVariants}
           initial="hidden"
@@ -87,15 +87,15 @@ export function Hero() {
 
           {/* ── Zone A: Identity ──────────────────────────────────── */}
           <motion.div
-            className="lg:col-start-1 lg:col-span-7 xl:col-span-8 lg:row-start-1"
+            className="md:col-start-1 md:col-span-7 xl:col-span-8 md:row-start-1"
             variants={slideUpVariants}
           >
             {/* Name */}
             <h1
               className={cn(
-                'text-[44px] sm:text-[52px] lg:text-[64px]',
-                'font-black leading-[1.02] tracking-[-0.03em]',
-                'text-foreground mb-4'
+                'text-[32px] sm:text-[44px] md:text-[48px] lg:text-[56px] xl:text-[64px]',
+                'font-black leading-[0.95] sm:leading-[1.02] tracking-[-0.03em]',
+                'text-foreground mb-1 md:mb-4'
               )}
             >
               Kunal Kavathekar
@@ -105,21 +105,21 @@ export function Hero() {
           {/* ── Zone B: Portrait ──────────────────────────────────── */}
           <motion.div
             className={cn(
-              'flex justify-center lg:justify-end lg:items-start',
-              'lg:col-start-8 xl:col-start-9',
-              'lg:col-span-5 xl:col-span-4',
-              'lg:row-start-1 lg:row-span-2'
+              'flex justify-center md:justify-end md:items-start',
+              'md:col-start-8 xl:col-start-9',
+              'md:col-span-5 xl:col-span-4',
+              'md:row-start-1 md:row-span-2'
             )}
             variants={photoVariants}
           >
-            <div className="relative w-full max-w-[280px] sm:max-w-[320px] aspect-[4/5] mx-auto lg:mr-0 lg:ml-auto">
+            <div className="relative w-full max-w-[200px] sm:max-w-[240px] md:max-w-[260px] lg:max-w-[320px] aspect-[4/5] mx-auto md:mr-0 md:ml-auto">
               {/* Background Layer Card */}
-              <div className="absolute inset-0 bottom-8 bg-surface-elevated border border-edge rounded-[24px] shadow-sm select-none" />
+              <div className="absolute inset-0 bottom-5 md:bottom-8 bg-surface-elevated border border-edge rounded-[24px] shadow-sm select-none" />
               
               {/* Front Portrait Image Card */}
               <div
                 className={cn(
-                  'absolute inset-4 overflow-hidden z-10',
+                  'absolute inset-2 sm:inset-3 md:inset-4 overflow-hidden z-10',
                   'rounded-[16px]',
                   'border border-edge dark:border-white/10',
                   'shadow-sm',
@@ -131,7 +131,7 @@ export function Hero() {
                   alt="Kunal Kavathekar — Software Developer"
                   fill
                   priority
-                  sizes="(max-width: 640px) 248px, (max-width: 768px) 288px, 320px"
+                  sizes="(max-width: 640px) 200px, (max-width: 768px) 240px, 320px"
                   className="object-cover object-top select-none"
                 />
               </div>
@@ -139,13 +139,13 @@ export function Hero() {
               {/* Elegant Building Since 2021 Signature Label */}
               <div
                 className={cn(
-                  'absolute bottom-[0] left-1/2 -translate-x-1/2 z-20',
-                  'bg-surface border border-edge rounded-[10px] px-3.5 py-1.5',
+                  'absolute bottom-[-2px] md:bottom-[0] left-1/2 -translate-x-1/2 z-20',
+                  'bg-surface border border-edge rounded-[10px] px-2.5 py-1 md:px-3.5 md:py-1.5',
                   'flex items-center gap-1.5 shadow-sm whitespace-nowrap select-none'
                 )}
               >
-                <Terminal size={11} className="text-orange" />
-                <span className="text-[11px] font-medium text-foreground tracking-tight">Building since 2021</span>
+                <Terminal size={10} className="text-orange" />
+                <span className="text-[9.5px] md:text-[11px] font-medium text-foreground tracking-tight">Building since 2021</span>
               </div>
             </div>
           </motion.div>
@@ -153,28 +153,31 @@ export function Hero() {
           {/* ── Zone C: Professional Information ──────────────────── */}
           <motion.div
             className={cn(
-              'lg:col-start-1 lg:col-span-7 xl:col-span-8',
-              'lg:row-start-2',
-              'lg:pt-7 lg:border-t lg:border-[var(--border-color)]'
+              'md:col-start-1 md:col-span-7 xl:col-span-8',
+              'md:row-start-2',
+              'md:pt-5 lg:pt-7 md:border-t md:border-[var(--border-color)]'
             )}
             variants={slideUpVariants}
           >
             {/* Title / Subtitle Row */}
-            <div className="flex flex-wrap gap-3 mb-8 items-end">
-              <span className="text-[28px] sm:text-[32px] font-semibold text-foreground tracking-tight leading-none">
-                Software Developer</span>
-               <span className='relative w-1.5 h-1.5 bg-[var(--accent-orange)] rounded-full inline-block -top-2'></span> 
+            <div className="flex flex-col md:flex-row md:flex-wrap md:items-end gap-1.5 md:gap-3 mb-4 lg:mb-8">
+              <div className="flex items-center gap-2">
+                <span className="text-[22px] sm:text-[26px] md:text-[28px] xl:text-[32px] font-semibold text-foreground tracking-tight leading-none">
+                  Software Developer
+                </span>
+                <span className='relative w-1 h-1 md:w-1.5 md:h-1.5 bg-[var(--accent-orange)] rounded-full inline-block md:-top-2'></span> 
+              </div>
               
-              <span className="font-mono text-[12.5px] sm:text-[13px] text-muted dark:text-secondary/80 tracking-[0.06em]">
+              <span className="font-mono text-[11.5px] md:text-[12.5px] lg:text-[13px] text-muted/90 dark:text-secondary/70 tracking-[0.04em] md:tracking-[0.06em] leading-[1.4]">
                 Full Stack • Modern Web • Scalable Solutions
               </span>
             </div>
 
-            <p className="text-[15.5px] sm:text-[17.5px] text-secondary leading-[1.7] max-w-[620px] mb-8 text-pretty">
+            <p className="text-[14px] sm:text-[15.5px] md:text-[16px] lg:text-[17.5px] text-secondary leading-[1.55] md:leading-[1.7] max-w-[620px] mb-5 md:mb-8 text-pretty">
               {SITE.description}
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 mb-6">
+            <div className="grid grid-cols-2 sm:flex sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 mb-5 md:mb-6">
               <Button
                 as={Link}
                 href={SITE.resume}
@@ -182,44 +185,44 @@ export function Hero() {
                 rel="noopener noreferrer"
                 variant="primary"
                 size="md"
-                className="group"
+                className="group w-full justify-center px-1 sm:px-4 text-[12.5px] sm:text-[14px]"
               >
                 Download Resume
-                <Download size={14} strokeWidth={2.4} className="transition-transform duration-200" />
+                <Download size={13} strokeWidth={2.4} className="transition-transform duration-200 ml-1.5" />
               </Button>
               <Button
                 as={Link}
                 href="#projects"
                 variant="secondary"
                 size="md"
-                className="group"
+                className="group w-full justify-center px-1 sm:px-4 text-[12.5px] sm:text-[14px]"
               >
                 View Projects
-                <ArrowRight size={14} strokeWidth={2.2} className="transition-transform duration-200 group-hover:translate-x-0.5" />
+                <ArrowRight size={13} strokeWidth={2.2} className="transition-transform duration-200 group-hover:translate-x-0.5 ml-1.5" />
               </Button>
             </div>
 
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2" role="list" aria-label="Social profiles">
+            <div className="flex items-center flex-wrap gap-3 sm:gap-4">
+              <div className="flex items-center gap-1.5 sm:gap-2" role="list" aria-label="Social profiles">
                 <SocialIconLink href={SITE.github} label="GitHub profile">
-                  <FaGithub size={15} />
+                  <FaGithub className="sm:w-[15px] sm:h-[15px] w-[14px] h-[14px]" />
                 </SocialIconLink>
                 <SocialIconLink href={SITE.linkedin} label="LinkedIn profile">
-                  <FaLinkedin size={15} />
+                  <FaLinkedin className="sm:w-[15px] sm:h-[15px] w-[14px] h-[14px]" />
                 </SocialIconLink>
                 <SocialIconLink
                   href={`mailto:${SITE.email}`}
                   label={`Email: ${SITE.email}`}
                   external={false}
                 >
-                  <Mail size={14} strokeWidth={1.75} />
+                  <Mail strokeWidth={1.75} className="sm:w-[14px] sm:h-[14px] w-[13px] h-[13px]" />
                 </SocialIconLink>
               </div>
 
-              <span className="w-px h-4 bg-[var(--border-color)]" aria-hidden />
+              <span className="w-px h-3.5 sm:h-4 bg-[var(--border-color)]" aria-hidden />
 
-              <span className="flex items-center gap-1.5 text-[14px] text-muted dark:text-secondary/80 select-none">
-                <MapPin size={14} strokeWidth={1.75} aria-hidden />
+              <span className="flex items-center gap-1.5 text-[12px] sm:text-[14px] text-muted dark:text-secondary/80 select-none">
+                <MapPin strokeWidth={1.75} aria-hidden className="sm:w-[14px] sm:h-[14px] w-[12px] h-[12px]" />
                 {SITE.location}
               </span>
             </div>
@@ -228,18 +231,18 @@ export function Hero() {
           {/* ── Zone D: Proof Metrics ─────────────────────────────── */}
           <motion.div
             className={cn(
-              'lg:col-start-1 lg:col-span-12 lg:row-start-3',
+              'md:col-start-1 md:col-span-12 md:row-start-3',
               'w-full'
             )}
             variants={slideUpVariants}
           >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-edge border border-edge rounded-[18px] overflow-hidden mt-12 md:mt-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-edge border border-edge rounded-[16px] md:rounded-[18px] overflow-hidden mt-3 md:mt-12 lg:mt-16">
               {HERO_METRICS.map((metric, i) => (
-                <div key={metric.value + i} className="bg-surface dark:bg-background p-6 sm:p-7 flex flex-col justify-center min-h-[108px] transition-colors duration-300">
-                  <span className="text-[28px] sm:text-[34px] font-bold tracking-tight text-foreground leading-none mb-2 select-none">
+                <div key={metric.value + i} className="bg-surface dark:bg-background p-3.5 sm:p-5 lg:p-7 flex flex-col justify-center min-h-[85px] sm:min-h-[108px] transition-colors duration-300">
+                  <span className="text-[22px] sm:text-[28px] lg:text-[34px] font-bold tracking-tight text-foreground leading-none mb-1.5 md:mb-2 select-none">
                     {metric.value}
                   </span>
-                  <span className="text-[13px] text-secondary leading-snug">
+                  <span className="text-[11px] sm:text-[13px] text-secondary leading-snug">
                     {metric.label.split('\n').join(' ')}
                   </span>
                 </div>

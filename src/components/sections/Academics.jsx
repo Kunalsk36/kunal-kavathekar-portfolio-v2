@@ -31,7 +31,7 @@ export function Academics() {
 
         {/* --- ACADEMIC JOURNEY --- */}
         <div className="mb-16">
-          <h3 className="text-[28px] sm:text-[32px] font-bold tracking-tight text-foreground mb-10">
+          <h3 className="text-[32px]s md:text-[36px] xl:text-[42px] font-bold tracking-tight text-foreground mb-10">
             Academic Journey
           </h3>
           
@@ -84,7 +84,7 @@ export function Academics() {
 
         {/* --- ACHIEVEMENTS & RECOGNITION --- */}
         <div>
-          <h3 className="text-[28px] sm:text-[32px] font-bold tracking-tight text-foreground mb-10">
+          <h3 className="text-[32px]s md:text-[36px] xl:text-[42px] font-bold tracking-tight text-foreground mb-10">
             Achievements & Recognition
           </h3>
 

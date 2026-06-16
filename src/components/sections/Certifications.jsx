@@ -45,7 +45,7 @@ export function Certifications() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
           <div className="max-w-2xl">
             <SectionHeading index="07" label="CERTIFICATIONS" className="mb-4 md:mb-6" />
-            <h3 className="text-[36px] sm:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground mb-4">
+            <h3 className="text-[32px]s md:text-[36px] xl:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground mb-4">
               Continuous Learning
             </h3>
             <p className="text-[15px] sm:text-[16px] text-secondary leading-relaxed max-w-[600px]">

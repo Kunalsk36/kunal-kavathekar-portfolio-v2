@@ -18,7 +18,7 @@ export function Skills() {
         <SectionHeading index="04" label="SKILLS" className="mb-4 md:mb-6" />
 
         {/* Main Heading */}
-        <h3 className="text-[36px] sm:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground mb-10">
+        <h3 className="text-[32px]s md:text-[36px] xl:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground mb-10">
           Technical Toolkit
         </h3>
 

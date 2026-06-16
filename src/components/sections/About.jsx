@@ -38,7 +38,7 @@ export function About() {
     <section
       id="about"
       aria-label="About Kunal Kavathekar"
-      className="relative bg-background border-t border-edge/30 py-20"
+      className="relative bg-background border-t border-edge/30 pt-10 pb-10 lg:pb-20"
     >
       <Container>
         <motion.div
@@ -53,10 +53,10 @@ export function About() {
         >
           {/* ── Left Column: Section Label & Personal Statement ──────── */}
           <div className="lg:col-span-5 flex flex-col items-start">
-            <SectionHeading index="01" label="ABOUT" className="mb-8 md:mb-10" />
+            <SectionHeading index="01" label="ABOUT" className="mb-2 md:mb-4 lg:mb-10" />
 
             {/* Statement */}
-            <h3 className="text-[32px] sm:text-[38px] lg:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground max-w-[280px] sm:max-w-xs">
+            <h3 className="text-[32px] sm:text-[38px] xl:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground max-w-[280px] sm:max-w-xs">
               Building digital products with logic, design, and impact.
             </h3>
 
