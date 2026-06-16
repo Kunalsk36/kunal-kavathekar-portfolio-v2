@@ -41,9 +41,8 @@ export function Skills() {
                 "border border-edge/60 dark:border-[rgba(255,255,255,0.08)]",
                 "shadow-[0_4px_20px_rgba(0,0,0,0.02),0_2px_8px_rgba(0,0,0,0.02)] dark:shadow-none",
                 "transition-all duration-300 ease-out",
-                "hover:-translate-y-1.5",
-                "hover:shadow-[0_12px_30px_rgba(0,0,0,0.05),0_4px_12px_rgba(0,0,0,0.03)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.3)]",
-                "hover:border-edge/80 dark:hover:border-[rgba(255,255,255,0.15)]"
+                "hover:border-edge/80 dark:hover:border-[rgba(255,255,255,0.15)]",
+                "hover:bg-surface-elevated/40 dark:hover:from-[#1A1B1E] dark:hover:to-[#16171A]"
               )}
             >
               <div className="flex items-center gap-2.5 mb-6 select-none">

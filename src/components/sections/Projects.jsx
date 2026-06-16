@@ -96,10 +96,9 @@ const ProjectCard = forwardRef(({ project, index = 0 }, ref) => {
         "border-edge/60 dark:border-[rgba(255,255,255,0.08)]",
         "dark:bg-[#111214]",
         "shadow-[0_4px_20px_rgba(0,0,0,0.02),0_2px_8px_rgba(0,0,0,0.02)] dark:shadow-none",
-        "transition-all duration-300 ease-out hover:-translate-y-1.5",
+        "transition-all duration-300 ease-out",
         "hover:border-edge/90 dark:hover:border-[rgba(255,255,255,0.15)]",
-        "dark:hover:bg-[#16171A]",
-        "hover:shadow-[0_12px_30px_rgba(0,0,0,0.05),0_4px_12px_rgba(0,0,0,0.03)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)]"
+        "hover:bg-surface-elevated/40 dark:hover:bg-[#16171A]"
       )}
     >
       {/* 1. Project Preview (approx 160px on mobile, 180px on desktop) */}
@@ -188,7 +187,7 @@ const ProjectCard = forwardRef(({ project, index = 0 }, ref) => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[13px] text-secondary hover:text-orange transition-colors duration-150 font-medium"
+                    className="inline-flex items-center gap-1.5 text-[13px] text-foreground/85 hover:text-orange transition-colors duration-200 font-semibold hover:underline underline-offset-4"
                   >
                     <FaGithub className="w-4 h-4" />
                     <span>Code</span>
@@ -199,7 +198,7 @@ const ProjectCard = forwardRef(({ project, index = 0 }, ref) => {
                     href={project.liveDemo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[13px] text-secondary hover:text-orange transition-colors duration-150 font-medium"
+                    className="inline-flex items-center gap-1.5 text-[13px] text-foreground/85 hover:text-orange transition-colors duration-200 font-semibold hover:underline underline-offset-4"
                   >
                     <ExternalLink className="w-4 h-4" />
                     <span>Live Demo</span>
@@ -220,6 +219,7 @@ const ProjectCard = forwardRef(({ project, index = 0 }, ref) => {
     </motion.div>
   );
 });
+ProjectCard.displayName = 'ProjectCard';
 
 /* ─── Projects Section ────────────────────────────────────────────── */
 export function Projects() {

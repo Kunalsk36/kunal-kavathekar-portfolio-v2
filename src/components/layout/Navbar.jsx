@@ -116,6 +116,39 @@ export function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
+  /* Manual Scroll Handler */
+  const handleNavClick = (e, href) => {
+    if (href === '/') {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      window.history.pushState(null, '', '/');
+      setMobileOpen(false);
+      return;
+    }
+
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        const offset = 80; // Navbar height offset
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+
+        // Update URL hash without jumping
+        window.history.pushState(null, '', href);
+      }
+    }
+    setMobileOpen(false);
+  };
+
   return (
     <>
       {/* ── Header ───────────────────────────────────────────────── */}
@@ -139,6 +172,7 @@ export function Navbar() {
             {/* Logo */}
             <Link
               href="/"
+              onClick={(e) => handleNavClick(e, '/')}
               aria-label="Kunal Kavathekar — home"
               className="flex items-center gap-3.5 flex-shrink-0 select-none group"
             >
@@ -156,18 +190,19 @@ export function Navbar() {
             </Link>
 
             {/* Desktop nav links */}
-            <ul className="hidden md:flex items-center gap-8" role="list">
+            <ul className="hidden md:flex items-center gap-1.5" role="list">
               {NAV_LINKS.map(({ label, href }) => {
                 const isActive = activeSection === href;
                 return (
-                  <li key={href} className="relative">
+                  <li key={href} className="relative flex">
                     <Link
                       href={href}
+                      onClick={(e) => handleNavClick(e, href)}
                       className={cn(
-                        'text-[13px] leading-none py-1 transition-colors duration-150',
+                        'block text-[13px] font-medium leading-none py-2 px-3.5 rounded-md transition-all duration-200',
                         isActive
                           ? 'text-foreground'
-                          : 'text-secondary hover:text-foreground'
+                          : 'text-secondary hover:text-foreground hover:bg-black/[0.03] dark:hover:bg-white/[0.04]'
                       )}
                     >
                       {label}
@@ -176,7 +211,7 @@ export function Navbar() {
                     {isActive && (
                       <motion.span
                         layoutId="nav-active-underline"
-                        className="absolute -bottom-px left-0 right-0 h-px bg-orange"
+                        className="absolute bottom-0 left-3.5 right-3.5 h-[2px] rounded-t-full bg-orange"
                         transition={{ type: 'spring', stiffness: 500, damping: 40 }}
                       />
                     )}
@@ -258,7 +293,11 @@ export function Navbar() {
             >
               {/* Panel header */}
               <div className="flex items-center justify-between px-6 h-16 border-b border-[var(--border-color)] flex-shrink-0">
-                <div className="flex items-center gap-2.5 select-none">
+                <Link 
+                  href="/"
+                  onClick={(e) => handleNavClick(e, '/')}
+                  className="flex items-center gap-2.5 select-none"
+                >
                   <Image
                     src="/branding/logo.png"
                     alt="Kunal Kavathekar Logo"
@@ -267,7 +306,7 @@ export function Navbar() {
                     className="h-8 w-auto object-contain"
                   />
                   <span className="font-semibold text-[14px] tracking-tight text-foreground">Kunal Kavathekar</span>
-                </div>
+                </Link>
                 <button
                   type="button"
                   onClick={() => setMobileOpen(false)}
@@ -298,7 +337,7 @@ export function Navbar() {
                       >
                         <Link
                           href={href}
-                          onClick={() => setMobileOpen(false)}
+                          onClick={(e) => handleNavClick(e, href)}
                           className={cn(
                             'flex items-center gap-4 px-3 py-2.5 rounded-[var(--radius-sm)]',
                             'transition-all duration-150',

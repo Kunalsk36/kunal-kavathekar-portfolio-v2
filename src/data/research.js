@@ -21,6 +21,7 @@ export const researchItems = [
     actionText: 'View Patent Publication',
     actionLink:
       'https://drive.google.com/file/d/1sYR-9TeLkUftq7U-5htnEwrr2HZP3j3h/view',
+    certificateImage: '/images/research/patent_publication.jpeg',
   },
   {
     id: 'pathreco-copyright',
@@ -33,5 +34,6 @@ export const researchItems = [
     actionText: 'View Copyright Certificate',
     actionLink:
       'https://drive.google.com/file/d/1fgV9YpetAknJqdU8aw5UJY6EtspLY1Vz/view',
+    certificateImage: '/images/research/copyright_pathreco.jpg',
   },
 ];

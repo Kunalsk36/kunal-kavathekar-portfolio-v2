@@ -56,7 +56,7 @@ function SocialIconLink({ href, label, children, external = true }) {
         'w-9 h-9 inline-flex items-center justify-center',
         'rounded-[10px]',
         'border border-[var(--border-color)]',
-        'text-muted hover:text-foreground hover:border-[var(--foreground-muted)] hover:-translate-y-0.5',
+        'text-muted hover:text-foreground hover:border-[var(--foreground-muted)]',
         'transition-all duration-200 ease-out focus-visible:outline-2 focus-visible:outline-orange'
       )}
     >
@@ -160,17 +160,17 @@ export function Hero() {
             variants={slideUpVariants}
           >
             {/* Title / Subtitle Row */}
-            <div className="flex flex-wrap gap-3 mb-6 items-end">
+            <div className="flex flex-wrap gap-3 mb-8 items-end">
               <span className="text-[28px] sm:text-[32px] font-semibold text-foreground tracking-tight leading-none">
                 Software Developer</span>
                <span className='relative w-1.5 h-1.5 bg-[var(--accent-orange)] rounded-full inline-block -top-2'></span> 
               
-              <span className="font-mono text-[12.5px] sm:text-[13px] text-muted tracking-[0.06em]">
+              <span className="font-mono text-[12.5px] sm:text-[13px] text-muted dark:text-secondary/80 tracking-[0.06em]">
                 Full Stack • Modern Web • Scalable Solutions
               </span>
             </div>
 
-            <p className="text-[15.5px] sm:text-[17.5px] text-secondary leading-relaxed max-w-[620px] mb-8 text-pretty">
+            <p className="text-[15.5px] sm:text-[17.5px] text-secondary leading-[1.7] max-w-[620px] mb-8 text-pretty">
               {SITE.description}
             </p>
 
@@ -182,17 +182,17 @@ export function Hero() {
                 rel="noopener noreferrer"
                 variant="primary"
                 size="md"
-                className="hover:-translate-y-0.5 hover:shadow-md hover:shadow-orange/10 transition-all duration-200 group"
+                className="group"
               >
                 Download Resume
-                <Download size={14} strokeWidth={2.4} className="transition-transform duration-200 group-hover:translate-y-0.5" />
+                <Download size={14} strokeWidth={2.4} className="transition-transform duration-200" />
               </Button>
               <Button
                 as={Link}
                 href="#projects"
                 variant="secondary"
                 size="md"
-                className="hover:-translate-y-0.5 hover:shadow-sm transition-all duration-200 group"
+                className="group"
               >
                 View Projects
                 <ArrowRight size={14} strokeWidth={2.2} className="transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -218,7 +218,7 @@ export function Hero() {
 
               <span className="w-px h-4 bg-[var(--border-color)]" aria-hidden />
 
-              <span className="flex items-center gap-1.5 text-[14px] text-muted select-none">
+              <span className="flex items-center gap-1.5 text-[14px] text-muted dark:text-secondary/80 select-none">
                 <MapPin size={14} strokeWidth={1.75} aria-hidden />
                 {SITE.location}
               </span>

@@ -44,7 +44,7 @@ export function Experience() {
 
         {/* Main Heading */}
         <h3 className="text-[36px] sm:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground mb-6">
-          Where I've worked
+          Where I&apos;ve worked
         </h3>
 
         {/* Experience List */}
@@ -66,7 +66,7 @@ export function Experience() {
                 <h4 className="text-[22px] sm:text-[24px] lg:text-[25px] font-bold text-foreground tracking-tight leading-tight">
                   {item.title}
                 </h4>
-                <span className="text-[13.5px] md:text-[14px] text-muted font-medium font-sans">
+                <span className="text-[13.5px] md:text-[14px] text-muted dark:text-secondary/80 font-medium font-sans">
                   {item.duration}
                 </span>
               </div>
@@ -105,7 +105,7 @@ export function Experience() {
                   {item.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="text-[12.5px] text-secondary bg-surface-elevated/60 dark:bg-surface-elevated/30 border border-edge/30 px-3 py-1 rounded-[6px] transition-colors duration-150 select-none"
+                      className="text-[12.5px] text-secondary bg-surface-elevated/60 dark:bg-white/[0.03] border border-edge/60 dark:border-white/[0.08] px-3 py-1 rounded-[6px] transition-colors duration-150 select-none"
                     >
                       {tech}
                     </span>

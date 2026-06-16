@@ -1,8 +1,10 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { CertificateModal } from '@/components/ui/CertificateModal';
 import { researchItems } from '@/data/research';
 import { ExternalLink, FileText, FileBadge, BookOpen, CheckCircle2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -16,6 +18,8 @@ function getCategoryIcon(category) {
 }
 
 export function Research() {
+  const [selectedCert, setSelectedCert] = useState(null);
+
   return (
     <section
       id="research"
@@ -51,16 +55,17 @@ export function Research() {
               }}
               className={cn(
                 "group flex flex-col h-full overflow-hidden select-none",
-                "bg-surface dark:bg-[#0A0A0C]", // Very subtle, flat premium dark background
-                "border border-edge/40 dark:border-white/[0.04]", // Extremely subtle borders
+                "bg-surface dark:bg-[#111214]", // Match Projects/Academics
+                "border border-edge/60 dark:border-white/[0.08]", // Differentiate from background
                 "rounded-[24px]",
                 "shadow-sm dark:shadow-none",
                 "transition-all duration-300 ease-out",
-                "hover:-translate-y-1 hover:shadow-md dark:hover:border-white/[0.08]"
+                "hover:border-edge/90 dark:hover:border-white/[0.15]",
+                "hover:bg-surface-elevated/40 dark:hover:bg-[#16171A]"
               )}
             >
               {/* Image Preview Container - Academic Thumbnail Style */}
-              <div className="relative w-full h-[180px] md:h-[220px] lg:h-[260px] shrink-0 bg-white border-b border-edge/30 dark:border-white/[0.04] filter grayscale-[0.2] dark:grayscale-[0.3] contrast-[0.95] dark:contrast-[0.8] transition-all duration-500 group-hover:grayscale-0 group-hover:contrast-100 overflow-hidden">
+              <div className="relative w-full h-[180px] md:h-[220px] lg:h-[260px] shrink-0 bg-white border-b border-edge/30 dark:border-white/[0.08] filter grayscale-[0.2] dark:grayscale-[0.3] contrast-[0.95] dark:contrast-[0.8] transition-all duration-500 group-hover:grayscale-0 group-hover:contrast-100 overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -108,26 +113,46 @@ export function Research() {
 
               </div>
 
-              {/* Action Link Footer */}
+              {/* Action Link / Modal Trigger Footer */}
               {item.actionLink && (
-                <div className="border-t border-edge/40 dark:border-white/[0.04] mt-auto shrink-0 bg-surface/50 dark:bg-white/[0.01]">
-                  <a
-                    href={item.actionLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/link flex items-center justify-between w-full px-6 py-4 md:px-8 transition-colors duration-200 hover:bg-surface-elevated/30 dark:hover:bg-white/[0.02]"
-                  >
-                    <span className="text-[13px] font-semibold text-secondary group-hover/link:text-orange transition-colors duration-200">
-                      {item.actionText}
-                    </span>
-                    <ExternalLink className="w-4 h-4 text-secondary/50 group-hover/link:text-orange transition-all duration-300 group-hover/link:translate-x-1" />
-                  </a>
+                <div className="border-t border-edge/40 dark:border-white/[0.08] mt-auto shrink-0 bg-surface/50 dark:bg-white/[0.01]">
+                  {item.certificateImage ? (
+                    <button
+                      onClick={() => setSelectedCert(item)}
+                      className="group/link flex items-center justify-between w-full px-6 py-4 md:px-8 transition-colors duration-200 hover:bg-surface-elevated/30 dark:hover:bg-white/[0.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-orange"
+                    >
+                      <span className="text-[13px] font-semibold text-secondary group-hover/link:text-orange transition-colors duration-200">
+                        {item.actionText}
+                      </span>
+                      <ExternalLink className="w-4 h-4 text-secondary/50 group-hover/link:text-orange transition-all duration-300 group-hover/link:translate-x-1" />
+                    </button>
+                  ) : (
+                    <a
+                      href={item.actionLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/link flex items-center justify-between w-full px-6 py-4 md:px-8 transition-colors duration-200 hover:bg-surface-elevated/30 dark:hover:bg-white/[0.02]"
+                    >
+                      <span className="text-[13px] font-semibold text-secondary group-hover/link:text-orange transition-colors duration-200">
+                        {item.actionText}
+                      </span>
+                      <ExternalLink className="w-4 h-4 text-secondary/50 group-hover/link:text-orange transition-all duration-300 group-hover/link:translate-x-1" />
+                    </a>
+                  )}
                 </div>
               )}
             </motion.div>
           ))}
         </div>
       </Container>
+
+      {/* Certificate Modal */}
+      <CertificateModal
+        isOpen={!!selectedCert}
+        onClose={() => setSelectedCert(null)}
+        title={selectedCert?.title}
+        image={selectedCert?.certificateImage}
+      />
     </section>
   );
 }
