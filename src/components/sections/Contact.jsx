@@ -95,14 +95,14 @@ export function Contact() {
           {/* Primary Action Buttons */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap items-center justify-center gap-4 mb-8"
+            className="flex flex-col sm:flex-row w-full sm:w-auto items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-6 lg:mb-8"
           >
             <Button
               as="a"
               href="mailto:kunalkavathekar@gmail.com"
               variant="primary"
               size="md"
-              className="group flex items-center gap-2"
+              className="group flex items-center justify-center gap-2 w-full sm:w-auto"
             >
               <Mail size={14} strokeWidth={2.4} className="transition-transform duration-200" />
               Get in Touch
@@ -116,7 +116,7 @@ export function Contact() {
               rel="noopener noreferrer"
               variant="secondary"
               size="md"
-              className="group flex items-center gap-2"
+              className="group flex items-center justify-center gap-2 w-full sm:w-auto"
             >
               <Download size={14} strokeWidth={2.2} className="transition-transform duration-200" />
               Download Resume
@@ -128,9 +128,10 @@ export function Contact() {
             variants={itemVariants}
             className="w-full"
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.15fr_1fr_0.8fr_1.15fr] gap-px bg-edge border border-edge rounded-[18px] overflow-hidden w-full">
-              {contactItems.map((item) => {
+            <div className="grid grid-cols-2 lg:grid-cols-[1.15fr_1fr_0.8fr_1.15fr] gap-px bg-edge border border-edge rounded-[18px] overflow-hidden w-full">
+              {contactItems.map((item, index) => {
                 const Icon = item.icon;
+                const isFullWidthMobile = index === 0 || index === 3;
                 return (
                   <a
                     key={item.label}
@@ -138,19 +139,20 @@ export function Contact() {
                     target={item.label !== 'EMAIL' && item.label !== 'PHONE' ? "_blank" : undefined}
                     rel={item.label !== 'EMAIL' && item.label !== 'PHONE' ? "noopener noreferrer" : undefined}
                     className={cn(
-                      "bg-surface dark:bg-[#111214] p-8 sm:p-9 md:p-10 flex flex-col justify-center items-start min-h-[136px] transition-all duration-300 group cursor-pointer relative"
+                      "bg-surface dark:bg-[#111214] p-5 md:p-7 lg:p-10 flex flex-col justify-center items-start min-h-[100px] md:min-h-[110px] lg:min-h-[136px] transition-all duration-300 group cursor-pointer relative overflow-hidden",
+                      isFullWidthMobile ? "col-span-2 md:col-span-1" : "col-span-1"
                     )}
                   >
                     {/* Label Row */}
-                    <div className="flex items-center gap-2 mb-3.5 select-none">
+                    <div className="flex items-center gap-2 mb-2.5 md:mb-3 lg:mb-3.5 select-none shrink-0">
                       <Icon size={13} className="text-secondary/60 group-hover:text-orange transition-colors duration-300" strokeWidth={2} />
-                      <span className="block font-mono text-[10px] font-semibold tracking-[0.2em] text-secondary/70 group-hover:text-foreground uppercase transition-colors duration-300">
+                      <span className="block font-mono text-[9.5px] md:text-[10px] font-semibold tracking-[0.2em] text-secondary/70 group-hover:text-foreground uppercase transition-colors duration-300">
                         {item.label}
                       </span>
                     </div>
 
                     {/* Contact Value */}
-                    <span className="block text-[14.5px] sm:text-[15.5px] font-semibold text-foreground/90 group-hover:text-foreground tracking-tight leading-snug select-all transition-colors duration-300">
+                    <span className="block w-full text-[14px] md:text-[15px] lg:text-[15.5px] font-semibold text-foreground/90 group-hover:text-foreground tracking-tight leading-snug select-all transition-colors duration-300 break-words lg:break-normal">
                       {item.value}
                     </span>
                   </a>
