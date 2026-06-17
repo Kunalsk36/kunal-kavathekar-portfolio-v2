@@ -74,7 +74,7 @@ function ProjectFallback({ project }) {
 }
 
 /* ─── Project Card Component ────────────────────────────────────────── */
-const ProjectCard = forwardRef(({ project, index = 0 }, ref) => {
+const ProjectCard = forwardRef(({ project, index = 0, className }, ref) => {
   const hasLinks = project.github || project.liveDemo;
   const isPrivate = project.privacyStatus === 'private';
 
@@ -98,11 +98,12 @@ const ProjectCard = forwardRef(({ project, index = 0 }, ref) => {
         "shadow-[0_4px_20px_rgba(0,0,0,0.02),0_2px_8px_rgba(0,0,0,0.02)] dark:shadow-none",
         "transition-all duration-300 ease-out",
         "hover:border-edge/90 dark:hover:border-[rgba(255,255,255,0.15)]",
-        "hover:bg-surface-elevated/40 dark:hover:bg-[#16171A]"
+        "hover:bg-surface-elevated/40 dark:hover:bg-[#16171A]",
+        className
       )}
     >
-      {/* 1. Project Preview (approx 160px on mobile, 180px on desktop) */}
-      <div className="overflow-hidden relative w-full h-[160px] md:h-[180px] border-b border-edge/20 dark:border-[rgba(255,255,255,0.08)] shrink-0">
+      {/* 1. Project Preview */}
+      <div className="overflow-hidden relative w-full h-[140px] md:h-[180px] border-b border-edge/20 dark:border-[rgba(255,255,255,0.08)] shrink-0">
         {project.id === 'kknotes' ? (
           <div className="relative w-full h-full bg-gradient-to-br from-neutral-800 to-neutral-900 dark:from-[#1A1A1E] dark:to-[#111214] flex items-center justify-center overflow-hidden">
             {/* Subtle grid pattern overlay */}
@@ -144,21 +145,21 @@ const ProjectCard = forwardRef(({ project, index = 0 }, ref) => {
       </div>
 
       {/* Content wrapper */}
-      <div className="flex flex-col flex-1 p-6 md:p-7">
+      <div className="flex flex-col flex-1 p-5 lg:p-7">
         {/* 2. Title and Type Badge Row */}
-        <div className="flex items-center justify-between gap-4">
-          <h4 className="text-[18px] md:text-[20px] font-bold text-foreground tracking-tight leading-tight">
+        <div className="flex items-center justify-between gap-3 md:gap-4">
+          <h4 className="text-[16px] md:text-[19px] lg:text-[20px] font-bold text-foreground tracking-tight leading-tight">
             {project.title}
           </h4>
 
           {/* Subtle outline project type badge */}
-          <span className="border border-orange/30 dark:border-orange/20 text-orange dark:text-orange/90 rounded-full px-2.5 py-0.5 text-[10px] md:text-[11px] font-semibold tracking-wide uppercase select-none shrink-0">
+          <span className="border border-orange/30 dark:border-orange/20 text-orange dark:text-orange/90 rounded-full px-2 py-0.5 lg:px-2.5 text-[9.5px] md:text-[10.5px] lg:text-[11px] font-semibold tracking-wide uppercase select-none shrink-0">
             {project.projectType}
           </span>
         </div>
 
         {/* 3. Full Description */}
-        <p className="text-[14px] text-secondary leading-relaxed mt-4 mb-4">
+        <p className="text-[13.5px] md:text-[14px] text-secondary leading-relaxed mt-2.5 md:mt-3 lg:mt-4 mb-3 md:mb-4">
           {project.description}
         </p>
 
@@ -166,11 +167,11 @@ const ProjectCard = forwardRef(({ project, index = 0 }, ref) => {
         <div className="flex-grow" />
 
         {/* 4. Technology Tags */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 lg:mb-6">
           {project.technologies.map((tech) => (
             <span
               key={tech}
-              className="bg-surface-elevated/50 dark:bg-white/[0.03] border border-edge/30 dark:border-white/[0.06] rounded px-2 py-0.5 text-[11px] md:text-[11.5px] font-mono text-muted dark:text-neutral-400 tracking-tight select-none"
+              className="bg-surface-elevated/50 dark:bg-white/[0.03] border border-edge/30 dark:border-white/[0.06] rounded px-1.5 py-0.5 md:px-2 text-[11px] md:text-[11.5px] font-mono text-muted dark:text-neutral-400 tracking-tight select-none"
             >
               {tech}
             </span>
@@ -179,7 +180,7 @@ const ProjectCard = forwardRef(({ project, index = 0 }, ref) => {
 
         {/* 5. Footer Actions */}
         {(hasLinks || isPrivate) ? (
-          <div className="pt-4 border-t border-edge/30 flex items-center justify-between min-h-[40px] shrink-0">
+          <div className="pt-3 md:pt-4 border-t border-edge/30 flex items-center justify-between min-h-[36px] md:min-h-[40px] shrink-0">
             {hasLinks ? (
               <div className="flex items-center gap-4">
                 {project.github && (
@@ -213,7 +214,7 @@ const ProjectCard = forwardRef(({ project, index = 0 }, ref) => {
             ) : null}
           </div>
         ) : (
-          <div className="min-h-[40px] pt-4 border-t border-transparent shrink-0" />
+          <div className="min-h-[36px] md:min-h-[40px] pt-3 md:pt-4 border-t border-transparent shrink-0" />
         )}
       </div>
     </motion.div>
@@ -271,32 +272,34 @@ export function Projects() {
     <section
       id="projects"
       aria-label="Projects Portfolio"
-      className="relative bg-background border-t border-edge/30 py-20"
+      className="relative bg-background border-t border-edge/30 py-10"
     >
       <Container>
         {/* Section label */}
         <SectionHeading index="03" label="PROJECTS" className="mb-4 md:mb-6" />
 
         {/* Main Heading */}
-        <h3 className="text-[32px]s md:text-[36px] xl:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground mb-10">
+        <h3 className="text-[26px] md:text-[32px] xl:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground mb-6 md:mb-8 lg:mb-10">
           Selected Work
         </h3>
 
         {/* ── Professional Projects ── */}
         <div>
-          <span className="text-[11.5px] font-semibold uppercase tracking-wider text-muted mb-6 block select-none">
+          <span className="text-[11px] lg:text-[11.5px] font-semibold uppercase tracking-wider text-muted mb-4 lg:mb-6 block select-none">
             03.1 — Professional Work
           </span>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 lg:gap-8">
             <AnimatePresence mode="popLayout">
-              {visibleProfessional.map((project, i) => {
+              {visibleProfessional.map((project, i, arr) => {
                 const isFirstNew = project.id === firstNewProfessionalId;
+                const isLastOdd = arr.length % 2 !== 0 && i === arr.length - 1;
                 return (
                   <ProjectCard 
                     key={project.id} 
-                    project={project} 
-                    index={i} 
-                    ref={isFirstNew ? firstNewProjectRef : null} 
+                    project={project}
+                    index={i}
+                    ref={isFirstNew ? firstNewProjectRef : null}
+                    className={cn(isLastOdd && "md:col-span-2 md:w-[calc(50%-12px)] lg:w-[calc(50%-16px)] md:mx-auto")}
                   />
                 );
               })}
@@ -305,22 +308,30 @@ export function Projects() {
         </div>
 
         {/* ── Personal & Research Projects ── */}
-        <div className="mt-20">
-          <span className="text-[11.5px] font-semibold uppercase tracking-wider text-muted mb-6 block select-none">
+        <div className="mt-8 md:mt-16 lg:mt-20">
+          <span className="text-[11px] lg:text-[11.5px] font-semibold uppercase tracking-wider text-muted mb-4 lg:mb-6 block select-none">
             03.2 — Personal &amp; Research Work
           </span>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6 lg:gap-8">
             <AnimatePresence mode="popLayout">
-              {visiblePersonal.map((project, i) => (
-                <ProjectCard key={project.id} project={project} index={i} />
-              ))}
+              {visiblePersonal.map((project, i, arr) => {
+                const isLastOdd = arr.length % 2 !== 0 && i === arr.length - 1;
+                return (
+                  <ProjectCard 
+                    key={project.id} 
+                    project={project} 
+                    index={i} 
+                    className={cn(isLastOdd && "md:col-span-2 md:w-[calc(50%-12px)] lg:w-[calc(50%-16px)] md:mx-auto xl:col-span-1 xl:w-full xl:mx-0")}
+                  />
+                );
+              })}
             </AnimatePresence>
           </div>
         </div>
 
         {/* ── Expand Toggle Button ── */}
         {hasMoreProjects && (
-          <div ref={scrollAnchorRef} className="mt-12 flex justify-center">
+          <div ref={scrollAnchorRef} className="mt-8 md:mt-12 flex justify-center">
             <Button
               type="button"
               variant="secondary"

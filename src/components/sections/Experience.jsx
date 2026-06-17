@@ -43,7 +43,7 @@ export function Experience() {
         <SectionHeading index="02" label="EXPERIENCE" className="mb-4 md:mb-6" />
 
         {/* Main Heading */}
-        <h3 className="text-[26px] md:text-[32px] xl:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground mb-2 md:mb-6">
+        <h3 className="text-[26px] md:text-[32px] xl:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground mb-2 lg:mb-6">
           Where I&apos;ve worked
         </h3>
 
