@@ -24,25 +24,27 @@ export function Research() {
     <section
       id="research"
       aria-label="Research & Intellectual Property Portfolio"
-      className="relative bg-background border-t border-edge/30 py-20"
+      className="relative bg-background border-t border-edge/30 pt-10 pb-8 md:pb-12 lg:pb-20 "
     >
       <Container>
         {/* Section label */}
-        <SectionHeading index="05" label="RESEARCH & IP" className="mb-4 md:mb-6" />
+        <SectionHeading index="05" label="RESEARCH & IP" className="mb-3 lg:mb-6" />
 
         {/* Main Heading and Subtitle */}
-        <div className="mb-10 max-w-[65ch]">
-          <h3 className="text-[32px]s md:text-[36px] xl:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground mb-6">
+        <div className="mb-8 md:mb-10 lg:mb-12 max-w-[65ch]">
+          <h3 className="text-[26px] md:text-[32px] lg:text-[36px] xl:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground mb-4 md:mb-6">
             Research & Intellectual Property
           </h3>
-          <p className="text-[15px] sm:text-[16px] text-secondary leading-relaxed">
+          <p className="text-[14px] md:text-[15px] lg:text-[16px] text-secondary leading-relaxed">
             The PathReco AI project has been recognized academically and legally, resulting in a published research paper, a published patent, and a registered copyright.
           </p>
         </div>
 
         {/* Grid Container */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {researchItems.map((item, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {researchItems.map((item, index, arr) => {
+            const isLastOdd = arr.length % 2 !== 0 && index === arr.length - 1;
+            return (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 16 }}
@@ -61,11 +63,12 @@ export function Research() {
                 "shadow-sm dark:shadow-none",
                 "transition-all duration-300 ease-out",
                 "hover:border-edge/90 dark:hover:border-white/[0.15]",
-                "hover:bg-surface-elevated/40 dark:hover:bg-[#16171A]"
+                "hover:bg-surface-elevated/40 dark:hover:bg-[#16171A]",
+                isLastOdd && "md:col-span-2 md:w-[calc(50%-16px)] md:mx-auto lg:col-span-1 lg:w-full lg:mx-0"
               )}
             >
               {/* Image Preview Container - Academic Thumbnail Style */}
-              <div className="relative w-full h-[180px] md:h-[220px] lg:h-[260px] shrink-0 bg-white border-b border-edge/30 dark:border-white/[0.08] filter grayscale-[0.2] dark:grayscale-[0.3] contrast-[0.95] dark:contrast-[0.8] transition-all duration-500 group-hover:grayscale-0 group-hover:contrast-100 overflow-hidden">
+              <div className="relative w-full h-[160px] md:h-[200px] lg:h-[260px] shrink-0 bg-white border-b border-edge/30 dark:border-white/[0.08] filter grayscale-[0.2] dark:grayscale-[0.3] contrast-[0.95] dark:contrast-[0.8] transition-all duration-500 group-hover:grayscale-0 group-hover:contrast-100 overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -78,10 +81,10 @@ export function Research() {
               </div>
 
               {/* Content wrapper */}
-              <div className="flex flex-col flex-1 px-6 pt-8 md:px-8">
+              <div className="flex flex-col flex-1 px-5 pt-6 md:px-7 md:pt-7 lg:px-8 lg:pt-8">
                 
                 {/* Category & Icon */}
-                <div className="flex items-center gap-2 mb-4">
+                <div className="flex items-center gap-2 mb-3 md:mb-4">
                   <span className="text-orange">
                     {getCategoryIcon(item.category)}
                   </span>
@@ -91,7 +94,7 @@ export function Research() {
                 </div>
 
                 {/* Title */}
-                <h4 className="text-[16px] md:text-[17px] font-bold text-foreground tracking-tight leading-[1.45] pr-2 mb-8">
+                <h4 className="text-[15px] md:text-[16px] lg:text-[17px] font-bold text-foreground tracking-tight leading-[1.4] md:leading-[1.45] pr-2 mb-6 md:mb-8">
                   {item.title}
                 </h4>
 
@@ -119,9 +122,9 @@ export function Research() {
                   {item.certificateImage ? (
                     <button
                       onClick={() => setSelectedCert(item)}
-                      className="group/link flex items-center justify-between w-full px-6 py-4 md:px-8 transition-colors duration-200 hover:bg-surface-elevated/30 dark:hover:bg-white/[0.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-orange"
+                      className="group/link flex items-center justify-between w-full px-5 py-3.5 md:px-7 md:py-4 lg:px-8 transition-colors duration-200 hover:bg-surface-elevated/30 dark:hover:bg-white/[0.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-orange"
                     >
-                      <span className="text-[13px] font-semibold text-secondary group-hover/link:text-orange transition-colors duration-200">
+                      <span className="text-[12.5px] md:text-[13px] lg:text-[13px] font-semibold text-secondary group-hover/link:text-orange transition-colors duration-200">
                         {item.actionText}
                       </span>
                       <ExternalLink className="w-4 h-4 text-secondary/50 group-hover/link:text-orange transition-all duration-300 group-hover/link:translate-x-1" />
@@ -131,9 +134,9 @@ export function Research() {
                       href={item.actionLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link flex items-center justify-between w-full px-6 py-4 md:px-8 transition-colors duration-200 hover:bg-surface-elevated/30 dark:hover:bg-white/[0.02]"
+                      className="group/link flex items-center justify-between w-full px-5 py-3.5 md:px-7 md:py-4 lg:px-8 transition-colors duration-200 hover:bg-surface-elevated/30 dark:hover:bg-white/[0.02]"
                     >
-                      <span className="text-[13px] font-semibold text-secondary group-hover/link:text-orange transition-colors duration-200">
+                      <span className="text-[12.5px] md:text-[13px] lg:text-[13px] font-semibold text-secondary group-hover/link:text-orange transition-colors duration-200">
                         {item.actionText}
                       </span>
                       <ExternalLink className="w-4 h-4 text-secondary/50 group-hover/link:text-orange transition-all duration-300 group-hover/link:translate-x-1" />
@@ -142,7 +145,8 @@ export function Research() {
                 </div>
               )}
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </Container>
 

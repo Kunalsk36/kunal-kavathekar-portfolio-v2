@@ -11,19 +11,19 @@ export function Skills() {
     <section
       id="skills"
       aria-label="Skills Portfolio"
-      className="relative bg-background py-12 border-t border-edge/30"
+      className="relative bg-background pt-10 pb-8 md:pb-12 lg:pb-20 border-t border-edge/30"
     >
       <Container>
         {/* Section label */}
         <SectionHeading index="04" label="SKILLS" className="mb-4 md:mb-6" />
 
         {/* Main Heading */}
-        <h3 className="text-[32px]s md:text-[36px] xl:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground mb-10">
+        <h3 className="text-[26px] md:text-[36px] xl:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground mb-8 lg:mb-10">
           Technical Toolkit
         </h3>
 
         {/* Grid Container */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-8">
           {skillCategories.map((category, index) => (
             <motion.div
               key={category.title}
@@ -36,7 +36,7 @@ export function Skills() {
                 delay: index * 0.1,
               }}
               className={cn(
-                "group flex flex-col rounded-[20px] p-7 lg:p-8",
+                "group flex flex-col rounded-[20px] p-5 md:p-7 lg:p-8",
                 "bg-surface dark:bg-gradient-to-b dark:from-[#16171A] dark:to-[#111214]",
                 "border border-edge/60 dark:border-[rgba(255,255,255,0.08)]",
                 "shadow-[0_4px_20px_rgba(0,0,0,0.02),0_2px_8px_rgba(0,0,0,0.02)] dark:shadow-none",
