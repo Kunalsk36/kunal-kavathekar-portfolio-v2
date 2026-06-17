@@ -43,7 +43,7 @@ export function Experience() {
         <SectionHeading index="02" label="EXPERIENCE" className="mb-4 md:mb-6" />
 
         {/* Main Heading */}
-        <h3 className="text-[32px]s md:text-[36px] xl:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground mb-6">
+        <h3 className="text-[26px] md:text-[32px] xl:text-[42px] font-bold leading-[1.1] tracking-tight text-foreground mb-2 md:mb-6">
           Where I&apos;ve worked
         </h3>
 
@@ -58,12 +58,12 @@ export function Experience() {
           {experience.map((item) => (
             <motion.div
               key={item.id}
-              className="border-t border-edge/60 py-6 md:py-8 last:border-b last:border-edge/80"
+              className="border-t border-edge/60 py-4 md:py-6 lg:py-8 last:border-b last:border-edge/80"
               variants={itemVariants}
             >
               {/* Header Row: Title & Duration */}
-              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-y-2 md:gap-y-0">
-                <h4 className="text-[22px] sm:text-[24px] lg:text-[25px] font-bold text-foreground tracking-tight leading-tight">
+              <div className="flex flex-col lg:flex-row lg:items-baseline lg:justify-between gap-y-2 lg:gap-y-0">
+                <h4 className="text-[20px] sm:text-[24px] lg:text-[25px] font-bold text-foreground tracking-tight leading-tight">
                   {item.title}
                 </h4>
                 <span className="text-[13.5px] md:text-[14px] text-muted dark:text-secondary/80 font-medium font-sans">
@@ -77,11 +77,11 @@ export function Experience() {
               </div>
 
               {/* Contributions Section */}
-              <div className="mt-4">
+              <div className="mt-2 md:mt-4">
                 <span className="text-[11.5px] font-semibold uppercase tracking-wider text-muted select-none">
                   Key Contributions
                 </span>
-                <ul className="space-y-1 mt-4 max-w-[680px]" role="list">
+                <ul className="space-y-1 mt-2 md:mt-4 max-w-[680px]" role="list">
                   {item.contributions.map((contribution, index) => (
                     <li
                       key={index}

@@ -28,7 +28,7 @@ export function SectionHeading({
     >
       {/* Numbered label row */}
       {(index || label) && (
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center lg:gap-2 mb-4">
           {align === 'center' && <div className="flex-1" />}
 
           {index && (
