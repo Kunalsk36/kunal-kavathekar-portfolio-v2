@@ -1,29 +1,52 @@
 <div align="center">
   <br />
   <h1>Kunal Kavathekar Portfolio</h1>
-  <p>A modern, highly responsive, and premium personal portfolio showcasing my experience, projects, academic research, and technical certifications.</p>
+  <p>A modern portfolio built to showcase software development experience, projects, research, and professional growth.</p>
 
   <a href="https://kunalkavathekar.vercel.app" target="_blank">
-    <strong>View Live Website »</strong>
+    <strong>🚀 Visit Portfolio</strong>
   </a>
   <br />
   <br />
 
-  [![Next.js](https://img.shields.io/badge/Next.js-16.2-black?style=flat&logo=next.js)](#)
-  [![React](https://img.shields.io/badge/React-19.2-blue?style=flat&logo=react)](#)
-  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.3-38B2AC?style=flat&logo=tailwind-css)](#)
-  [![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.4-ff0055?style=flat&logo=framer)](#)
-  [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=flat&logo=vercel)](#)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](#)
+[![Next.js](https://img.shields.io/badge/Next.js-black?style=flat&logo=next.js)](#)
+[![React](https://img.shields.io/badge/React-blue?style=flat&logo=react)](#)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css)](#)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-ff0055?style=flat&logo=framer)](#)
+[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=flat&logo=vercel)](#)
+
 </div>
 
 ---
 
+## Preview
+
+![Portfolio Preview](./public/images/portfolio-preview.png)
+
 ## 🌟 Overview
 
-Welcome to the source code for my professional software developer portfolio! 
+Welcome to the repository of my personal portfolio website.
 
-Designed for recruiters, hiring managers, and potential collaborators, this repository contains the completely custom-built frontend application that powers my online presence. It emphasizes a premium visual hierarchy, fluid animations, robust responsive design across all devices, and an organized showcase of both academic and professional achievements.
+This portfolio serves as a central hub for my technical journey, showcasing my full-stack development projects, academic research, and industry experience. Built with a strong focus on responsiveness, usability, and modern web development practices, the interface provides a clean, accessible, and highly optimized experience across all devices. The design philosophy relies on elegant typography, subtle animations, and a structured layout to present complex information clearly.
+
+## 🌐 Live Website
+
+https://kunalkavathekar.vercel.app
+
+## 💡 Key Highlights
+
+- **7 Months of Industry Experience**: Proven track record in professional software development.
+- **Published Research Paper**: Academic contribution to the field.
+- **Published Patent**: Recognized intellectual property.
+- **Registered Copyright**: Legally registered technical work.
+- **Full Stack Development Projects**: Comprehensive showcase of real-world applications.
+- **Responsive Design**: Pixel-perfect on mobile, tablet, and desktop.
+- **Dark & Light Mode Support**: Seamless thematic switching.
+- **Academic Achievements and Certifications**: Documented continuous learning and milestones.
+
+## 🎯 Why This Portfolio?
+
+The purpose of this portfolio is to provide a comprehensive look into my technical growth and professional experience. Beyond just a resume, it serves as a live demonstration of my coding capabilities, highlighting my projects, research, and achievements in an interactive format. By creating a clean and accessible user experience, I aim to show not just what I've built, but how much I care about code quality, performance, and user-centric design.
 
 ## ✨ Features
 
@@ -32,7 +55,7 @@ Designed for recruiters, hiring managers, and potential collaborators, this repo
 - **Professional Project Showcase**: Deep dive into technical projects featuring interactive cards, tech stack tags, and direct links.
 - **Research & Intellectual Property**: Dedicated showcase for published research papers, patent publications, and copyright registrations.
 - **Academics & Achievements**: Timeline of educational history combined with distinguished awards and recognitions.
-- **Certifications Gallery**: Interactive modal gallery displaying professional technical certifications.
+- **Certifications Gallery**: Interactive modal gallery displaying certifications.
 - **Smooth Navigation**: Fluid Framer Motion transitions and intersection observers for a highly polished scrolling experience.
 - **Resume Integration**: Direct 1-click download access to the latest professional resume.
 
@@ -52,7 +75,7 @@ This project is built using modern, industry-standard web technologies:
 
 The portfolio flows chronologically through the following components:
 
-1. **Hero**: High-impact introduction, dynamic role typing, and primary calls to action.
+1. **Hero**: High-impact introduction, and primary calls to action.
 2. **About**: Personal background, professional philosophy, and core objectives.
 3. **Experience**: Career timeline detailing roles, responsibilities, and key deliverables.
 4. **Projects**: Categorized grid (Professional vs. Personal) of full-stack software applications.
@@ -82,8 +105,10 @@ kunal-kavathekar-portfolio-v2/
 │   ├── data/               # Static JSON/JS data arrays powering the UI
 │   ├── hooks/              # Custom React hooks (e.g., useTheme)
 │   └── lib/                # Utility functions (Tailwind merge, etc.)
-├── tailwind.config.js      # Tailwind CSS configuration and themes
+├── eslint.config.mjs       # ESLint configuration
+├── next.config.mjs         # Next.js configuration
 ├── package.json            # Dependencies and scripts
+├── postcss.config.mjs      # PostCSS configuration
 └── README.md               # Project documentation
 ```
 
@@ -92,16 +117,19 @@ kunal-kavathekar-portfolio-v2/
 To run this project locally, follow these steps:
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/Kunalsk36/kunal-kavathekar-portfolio-v2.git
    ```
 
 2. **Navigate to the project directory:**
+
    ```bash
    cd kunal-kavathekar-portfolio-v2
    ```
 
 3. **Install dependencies:**
+
    ```bash
    npm install
    ```
@@ -110,7 +138,7 @@ To run this project locally, follow these steps:
    ```bash
    npm run dev
    ```
-   *The application will start on `http://localhost:3000`*
+   _The application will start on `http://localhost:3000`_
 
 ## 🏗️ Build for Production
 
@@ -130,28 +158,16 @@ This application is continuously deployed via **Vercel**. Every push to the `mai
 ## 📱 Performance & Responsiveness
 
 Great care was taken to ensure universal accessibility and responsiveness:
+
 - **Desktop Optimized**: Full utilization of ultra-wide displays with max-width containers and complex multi-column grid layouts.
 - **Tablet Optimized**: Graceful degradation into 2-column arrays, heavily relying on responsive `md:` breakpoints and dynamic odd-item centering.
 - **Mobile Optimized**: Strictly enforced single-column flows, robust text-wrapping, comfortable touch targets, and compact spacing to eliminate scroll fatigue.
 
-## 🔮 Future Improvements
-
-A roadmap for upcoming iterations:
-- [ ] **Blog Integration**: Add MDX support for publishing technical articles and tutorials directly on the platform.
-- [ ] **Project Filtering**: Implement dynamic category filtering (e.g., React, Node.js, AI) in the Projects section.
-- [ ] **CMS Integration**: Migrate static `/data` files to a headless CMS (like Sanity or Contentful) for easier content management.
-- [ ] **Enhanced Animations**: Add subtle micro-interactions to buttons and cards.
-- [ ] **Analytics Dashboard**: Integrate simple, privacy-friendly analytics.
-
 ## 👨‍💻 Author
 
 **Kunal Kavathekar**  
-*Software Developer*
+_Software Developer | Full Stack Developer_
 
 - **Portfolio**: [https://kunalkavathekar.vercel.app](https://kunalkavathekar.vercel.app)
 - **GitHub**: [@Kunalsk36](https://github.com/Kunalsk36)
 - **LinkedIn**: [kunal-kavathekar](https://www.linkedin.com/in/kunal-kavathekar)
-
-## 📄 License
-
-This project is licensed under the [MIT License](./LICENSE).
